@@ -1,5 +1,5 @@
 // Work to get the filter buttons working
-(function(){
+// (function(){
     // const buttons = document.querySelectorAll('.btn')
     // const storeItems = document.querySelectorAll('.store-item')
     //console.log(buttons)
@@ -50,49 +50,144 @@
     //     })
     // })
 
+
+
     // refactor to get rid of DRY code
-    const buttons = document.querySelectorAll('.btn')
-    const storeItems = document.querySelectorAll('.store-item')
+//     const buttons = document.querySelectorAll('.btn')
+//     const storeItems = document.querySelectorAll('.store-item')
 
-    buttons.forEach((button)=> {
-        button.addEventListener('click', (e) => {
-            e.preventDefault()
-            const filter = e.target.dataset.filter
+//     buttons.forEach((button)=> {
+//         button.addEventListener('click', (e) => {
+//             e.preventDefault()
+//             const filter = e.target.dataset.filter
             
-            storeItems.forEach((item)=> {
-                if (filter === 'all'){
-                    item.style.display = 'block'
-                } else {
-                    if (item.classList.contains(filter)){
-                        item.style.display = 'block'
-                    } else {
-                        item.style.display = 'none'
-                    }
-                }
-            })
-        })
-    })
+//             storeItems.forEach((item)=> {
+//                 if (filter === 'all'){
+//                     item.style.display = 'block'
+//                 } else {
+//                     if (item.classList.contains(filter)){
+//                         item.style.display = 'block'
+//                     } else {
+//                         item.style.display = 'none'
+//                     }
+//                 }
+//             })
+//         })
+//     })
 
-})();
+// })();
 
-//wire up filter search box
-(function(){
+// //wire up filter search box
+// (function(){
 
-    const searchBox = document.querySelector('#search-item')
-    const storeItems = document.querySelectorAll('.store-item')
+//     const searchBox = document.querySelector('#search-item')
+//     const storeItems = document.querySelectorAll('.store-item')
 
-    searchBox.addEventListener('keyup', (e) => {
+//     searchBox.addEventListener('keyup', (e) => {
     
-        const searchFilter = e.target.value.toLowerCase().trim()
-        //display only items that contain filter input
+//         const searchFilter = e.target.value.toLowerCase().trim()
+//         //display only items that contain filter input
 
-        storeItems.forEach((item) => {
-            if (item.textContent.includes(searchFilter)){
-                item.style.display = 'block'
-            } else {
-                item.style.display = 'none'
+//         storeItems.forEach((item) => {
+//             if (item.textContent.includes(searchFilter)){
+//                 item.style.display = 'block'
+//             } else {
+//                 item.style.display = 'none'
+//             }
+//         })
+//     })
+
+// })();
+
+
+
+
+
+// My attempt
+
+let buttons = document.querySelectorAll(".btn")
+let storeItems = document.querySelectorAll(".store-item")
+// console.log(storeItems);
+
+// buttons.forEach((btn)=>{
+//     btn.addEventListener('click', function(e){
+//         e.preventDefault();
+
+//         const filter = e.target.dataset.filter
+//         // console.log((filter));
+//         storeItems.forEach((item)=>{
+//             if(filter === "all"){
+//                 item.style.display = "block"
+//             } 
+//             else if (filter === "cakes"){
+//                 if(item.classList.contains("cakes")){
+//                     item.style.display = "block"
+//                 }else{
+//                     item.style.display = "none"
+//                 }
+//             }else if (filter === "cupcakes"){
+//                 if(item.classList.contains("cupcakes")){
+//                     item.style.display = "block"
+//                 }else{
+//                     item.style.display = "none"
+//                 }
+//             }else if (filter === "sweets"){
+//                 if(item.classList.contains("sweets")){
+//                     item.style.display = "block"
+//                 }else{
+//                     item.style.display = "none"
+//                 }
+//             }else if (filter === "doughnuts"){
+//                 if(item.classList.contains("doughnuts")){
+//                     item.style.display = "block"
+//                 }else{
+//                     item.style.display = "none"
+//                 }
+//             }
+            
+//             else{
+//                 item.style.display = "none"
+//             }
+//         })
+        
+//     })
+// })
+
+buttons.forEach((btn)=>{
+    // console.log(btn);
+    btn.addEventListener("click", (e)=>{
+        e.preventDefault();
+        const filter = e.target.dataset.filter 
+
+        storeItems.forEach(item =>{
+            // console.log(item);
+            if(filter === "all"){
+                item.style.display = "block"
             }
+            else{
+                if(item.classList.contains(filter)){
+                    item.style.display = "block"
+                }else{
+                    item.style.display = "none"
+                }
+            }
+
         })
     })
+})
 
-})();
+
+const searchBox = document.querySelector('#search-item')
+
+searchBox.addEventListener("keyup", function(e){
+    const searchFilter = e.target.value.toLowerCase().trim()
+    console.log(searchFilter);
+
+    storeItems.forEach((item)=>{
+        if(item.textContent.includes(searchFilter)){
+            item.style.display = "block"
+        }else{
+            item.style.display = "none"
+        }
+    })
+})
